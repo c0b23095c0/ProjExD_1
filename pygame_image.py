@@ -17,16 +17,30 @@ def main():
     pg.draw.circle(enn, (255, 0, 0), (10,10),10)
     tmr = 0
     bg_x = 0
+    kk_rct = img.get_rect()
+    kk_rct.center = 300, 200
+    mv = 1
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
+        key_lst = pg.key.get_pressed()
+        if key_lst[pg.K_LSHIFT]:
+            mv = 2
+        if key_lst[pg.K_UP]:
+            kk_rct.move_ip((0, -mv))
+        if key_lst[pg.K_DOWN]:
+            kk_rct.move_ip((0, mv))
+        if key_lst[pg.K_LEFT]:
+            kk_rct.move_ip((-mv, 0))
+        if key_lst[pg.K_RIGHT]:
+            kk_rct.move_ip((mv, 0))
         bg_x = -(tmr%3200)
         screen.blit(bg_img,[(bg_x), 0])
         screen.blit(bgflip_img,[(bg_x+1600), 0])
         screen.blit(bg_img,[(bg_x+3200), 0])
         screen.blit(bgflip_img,[(bg_x+4800), 0])
         tmr += 1
-        screen.blit(img, [300,200])
+        screen.blit(img, kk_rct)
         pg.display.update()       
         clock.tick(200)
 
