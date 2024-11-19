@@ -11,11 +11,9 @@ def main():
     clock  = pg.time.Clock()
     bg_img = pg.image.load("fig/pg_bg.jpg")
     img = pg.image.load("fig/3.png")
-    
+    img = pg.transform.flip(img, True, False)
     enn = pg.Surface((20,20))
-    pg.transform.flip(img, -1, 1)
     pg.draw.circle(enn, (255, 0, 0), (10,10),10)
-    
     tmr = 0
     while True:
         for event in pg.event.get():
