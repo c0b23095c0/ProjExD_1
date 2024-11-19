@@ -9,9 +9,8 @@ def main():
     pg.display.set_caption("はばたけ！こうかとん")
     screen = pg.display.set_mode((800, 600))
     clock  = pg.time.Clock()
-    bg_x = 0
-    bg_y = 0
     bg_img = pg.image.load("fig/pg_bg.jpg")
+    bgflip_img = pg.transform.flip(bg_img, True, False)
     img = pg.image.load("fig/3.png")
     img = pg.transform.flip(img, True, False)
     enn = pg.Surface((20,20))
@@ -21,11 +20,11 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
-        screen.blit(bg_img, [bg_x, bg_y])
-        bg_x += -1
+        screen.blit(bg_img, [tmr%800, 0])
+        screen.blit(bgflip_img, [tmr, 0])
+        tmr += -1
         screen.blit(img, [300,200])
-        pg.display.update()
-        tmr += 1        
+        pg.display.update()       
         clock.tick(200)
 
 
