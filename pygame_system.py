@@ -1,7 +1,7 @@
 import os
 import sys
 import pygame as pg
-
+#commit
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 
