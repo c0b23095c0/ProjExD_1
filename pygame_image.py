@@ -16,13 +16,16 @@ def main():
     enn = pg.Surface((20,20))
     pg.draw.circle(enn, (255, 0, 0), (10,10),10)
     tmr = 0
+    bg_x = 0
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
-
-        screen.blit(bg_img, [tmr%800, 0])
-        screen.blit(bgflip_img, [tmr, 0])
-        tmr += -1
+        bg_x = -(tmr%3200)
+        screen.blit(bg_img,[(bg_x), 0])
+        screen.blit(bgflip_img,[(bg_x+1600), 0])
+        screen.blit(bg_img,[(bg_x+3200), 0])
+        screen.blit(bgflip_img,[(bg_x+4800), 0])
+        tmr += 1
         screen.blit(img, [300,200])
         pg.display.update()       
         clock.tick(200)
