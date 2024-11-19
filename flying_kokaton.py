@@ -30,7 +30,7 @@ def main():
         if key_lst[pg.K_DOWN]:
             mv_y = 1
         if key_lst[pg.K_LEFT]:
-            mv_x = -2
+            mv_x = -1
         if key_lst[pg.K_RIGHT]:
             mv_x = 2
         if key_lst[pg.K_LSHIFT]:
